@@ -1,10 +1,12 @@
 # Goorm 搭建 xray vmess / vless 节点
 
-使用goorm的免费ide，配合alwayson功能和端口转发，实现xray代理服务
+使用goorm的免费ide，配合其alwayson功能和端口转发，实现xray代理服务
 
 # 注：请勿在常用账号部署本项目
 
 ## 食用方法
+
+待更新
 
 ## 免责声明
 
