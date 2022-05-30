@@ -27,6 +27,9 @@ echo -e "# ${GREEN}TG群${PLAIN}: https://t.me/misakanetcn                      
 echo "#############################################################"
 echo ""
 
+yellow "使用前请注意："
+red "1. 我已知悉本项目有可能触发 Goorm 封号机制"
+red "2. 我不保证脚本其搭建节点的稳定性"
 read -rp "是否安装脚本？ [Y/N]：" yesno
 
 if [[ $yesno =~ "Y"|"y" ]]; then
