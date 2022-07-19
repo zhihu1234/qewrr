@@ -35,8 +35,8 @@ read -rp "是否安装脚本？ [Y/N]：" yesno
 if [[ $yesno =~ "Y"|"y" ]]; then
     rm -f railgun kazari.json
     yellow "开始安装..."
-    wget -N https://raw.githubusercontent.com/zhihu1234/qewrr/master/railgun
-    chmod +x railgun
+    wget -N https://raw.githubusercontent.com/zhihu1234/qewrr/master/kano
+    chmod +x kano
     read -rp "请设置UUID（如无设置则使用脚本默认的）：" uuid
     if [[ -z $uuid ]]; then
         uuid="8d4a8f5e-c2f7-4c1b-b8c0-f8f5a9b6c384"
@@ -46,40 +46,23 @@ if [[ $yesno =~ "Y"|"y" ]]; then
     "log": {
         "loglevel": "warning"
     },
-    "inbounds": [
-        {
-            "port": 11111,
-            "protocol": "vmess",
-            "settings": {
-                "clients": [
-                    {
-                        "id": "$uuid"
-                    }
-                ],
-                "decryption": "none"
-            },
-            "streamSettings": {
-                "network": "ws",
-                "security": "none"
-            }
-        },
-        {
-            "port": 11111,
-            "protocol": "vless",
-            "settings": {
-                "clients": [
-                    {
-                        "id": "$uuid"
-                    }
-                ],
-                "decryption": "none"
-            },
-            "streamSettings": {
-                "network": "ws",
-                "security": "none"
-            }
-        }
-    ],
+	"inbounds":[{
+		"port":80,
+		"listen":"0.0.0.0",
+		"protocol":"vless",
+		"settings":{
+			"clients":[{
+				"id":"$uuid"
+			}],
+			"decryption":"none"
+		},
+		"streamSettings":{
+			"network":"ws",
+			"wsSettings":{
+				"path":"/ray"
+			}
+		}
+	}],
     "outbounds": [
         {
             "protocol": "freedom"
@@ -87,7 +70,7 @@ if [[ $yesno =~ "Y"|"y" ]]; then
     ]
 }
 EOF
-    nohup ./railgun -config=kazari.json &>/dev/null &
+    nohup ./kano -config=kazari.json &>/dev/null &
     green "Goorm Xray 已安装完成！"
     yellow "请认真阅读项目说明文档，配置端口转发！"
     yellow "别忘记给项目点一个免费的Star！"
