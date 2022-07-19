@@ -47,8 +47,8 @@ if [[ $yesno =~ "Y"|"y" ]]; then
         "loglevel": "warning"
     },
 	"inbounds":[{
-		"port":80,
-		"listen":"0.0.0.0",
+		"port": 1234,
+		
 		"protocol":"vless",
 		"settings":{
 			"clients":[{
